@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 05, 2021 at 03:52 PM
+-- Generation Time: Nov 05, 2021 at 04:30 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -212,6 +212,21 @@ INSERT INTO `states` (`id`, `State`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL,
+  `reg_num` varchar(115) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `dept` varchar(255) NOT NULL,
+  `date` varchar(112) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userlog`
 --
 
@@ -266,18 +281,6 @@ INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastN
 (19, '102355', 'Harry', 'projects', 'Singh', 'male', 6786786786, 'Harry@gmail.com', '6786786786', '2016-06-26 16:33:36', '', ''),
 (20, '586952', 'Benjamin', '', 'projects', 'male', 8596185625, 'Benjamin@gmail.com', '8596185625', '2016-06-26 16:40:07', '', '');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user_auth`
---
-
-CREATE TABLE `user_auth` (
-  `id` int(11) NOT NULL,
-  `reg_num` varchar(115) NOT NULL,
-  `student_name` varchar(225) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Indexes for dumped tables
 --
@@ -313,6 +316,12 @@ ALTER TABLE `states`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `userlog`
 --
 ALTER TABLE `userlog`
@@ -322,12 +331,6 @@ ALTER TABLE `userlog`
 -- Indexes for table `userregistration`
 --
 ALTER TABLE `userregistration`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_auth`
---
-ALTER TABLE `user_auth`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -365,6 +368,12 @@ ALTER TABLE `states`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
@@ -375,12 +384,6 @@ ALTER TABLE `userlog`
 --
 ALTER TABLE `userregistration`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `user_auth`
---
-ALTER TABLE `user_auth`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

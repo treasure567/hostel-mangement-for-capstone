@@ -48,19 +48,36 @@ if (isset($_POST['submit'])) {
     }
   }
 
+$check_reg = mysqli_query($db, "SELECT reg_num FROM students WHERE student_email ='$email' LIMIT 1")
+or exit (mysqli_error($db));
+while ($row_reg = $check_reg->fetch_assoc()) {
+	$user_reg = $row_reg['reg_num'];
+}
+
+  /* if ($user_reg) { // if user reg number exists
+    if ($user_reg['reg_num'] != $reg_num) {
+      array_push($errors, "Sorry This Student wasn't found in our database");
+    }
+  } */
   // Finally, register user if there are no errors in the form
+  if ($user_reg != NULL) {
+      if ($user_reg === $reg_num) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
+    $room_num = rand(111, 999);
 
-  	$query = "INSERT INTO users (reg_num, first_name, last_name, username, email, password)
-  			  VALUES('$reg_num', '$first_name', '$last_name', '$username', '$email', '$password')";
+  	$query = "INSERT INTO users (reg_num, room_num, first_name, last_name, username, email, password)
+  			  VALUES('$reg_num', '$room_num', '$first_name', '$last_name', '$username', '$email', '$password')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: index.php');
+  } else {
+      array_push($errors, "Sorry This Student wasn't found in our database");
   }
 }
-
+}
+}
 if (isset($_POST['login_user'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -78,6 +95,13 @@ if (isset($_POST['login_user'])) {
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['username'] = $username;
+          $username = $_SESSION['username'];
+$select_room_number = mysqli_query($db, "SELECT room_num FROM users WHERE username='$username' AND password='81dc9bdb52d04dc20036dbd8313ed055'")
+or exit (mysqli_error($db));
+while ($row_w = $select_room_number->fetch_assoc()) {
+  $room_num2 = $row_w['room_num'];
+}
+          //$_SESSION['room_num'] = $room_num;
           $_SESSION['success'] = "You are now logged in";
           header('location: index.php');
         }else {

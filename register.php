@@ -1,4 +1,6 @@
-<?php include('server.php') ?>
+<?php include('server.php') 
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,16 @@
   <link rel="stylesheet" type="text/css" href="css/style2.css">
 </head>
 <body>
+
+<?php 
+$check_reg = mysqli_query($db, "SELECT * FROM students WHERE reg_num='123456789' LIMIT 1")
+or exit (mysqli_error($db));
+while ($row_w = $check_reg->fetch_assoc()) {
+	$user_reg = $row_w['reg_num'];
+}
+/* $result_reg = mysqli_query($db, $check_reg);
+$user_reg = mysqli_fetch_assoc($result_reg); */
+?>
 
 <section class="ftco-section">
 		<div class="container">

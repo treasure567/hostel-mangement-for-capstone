@@ -1,75 +1,131 @@
-<!doctype html>
-<html lang="en">
-  <head>
-  	<title>Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+﻿<!DOCTYPE html>
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Hostel - Login</title>
+    <link rel="stylesheet" href="assets/css/style.css"/>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	<link rel="stylesheet" href="css/style.css">
+    <?php
+    	// Initialize the session
+		session_start();
 
-	</head>
-	<body>
-	<section class="ftco-section">
-		<div class="container">
-		
-			<div class="row justify-content-center">
-				<div class="col-md-7 col-lg-5">
-					<div class="wrap">
-						<div class="img" style="background-image: url(images/mat.jpg);"></div>
-						<div class="login-wrap p-4 p-md-5">
-			      	<div class="d-flex">
-			      		<div class="w-100">
-			      			<h3 class="mb-4">Sign In</h3>
-			      		</div>
-								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-									</p>
-								</div>
-			      	</div>
-							<form action="#" class="signin-form">
-			      		<div class="form-group mt-3">
-			      			<input type="text" class="form-control" required>
-			      			<label class="form-control-placeholder" for="username">Enter Username:</label>
-			      		</div>
-		            <div class="form-group">
-		              <input id="password-field" type="password" class="form-control" required>
-		              <label class="form-control-placeholder" for="password">Your Password:</label>
-		              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-		            </div>
-		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary rounded px-3" style="background-color: rgb(68, 68, 214) !important">Login</button>
-		            </div>
-		            <div class="form-group d-md-flex">
-		            	<div class="w-50 text-left">
-			            	<label class="checkbox-wrap mb-0 checkbox-primary"  style="color: rgb(68, 68, 214) !important">Remember Me
-									  <input type="checkbox" checked>
-									  <span class="checkmark"  style="background-color: rgb(68, 68, 214) !important"></span>
-										</label>
-									</div>
-									<div class="w-50 text-md-right">
-										<a href="forgot_password.html">Forgot Password</a>
-									</div>
-		            </div>
-		          </form>
-		          <p class="text-center">Not a member? <a href="signup.html" style="color: rgb(68, 68, 214) !important;">Sign Up</a></p>
-		        </div>
-		      </div>
-				</div>
-			</div>
-		</div>
-	</section>
+		// Include config file
+		require_once "database/config.php";
 
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+		// Define variables and initialize with empty values
+		$username = $password = "";
+		$username_err = $password_err = $login_err = "";
 
-	</body>
+
+        // Processing form data when form is submitted
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            //Check if username is empty
+            if(empty(trim($_POST["username"]))){
+                $username_err = "Please enter username.";
+            } else{
+                $username = trim($_POST["username"]);
+            }
+
+            // Check if password is empty
+            if(empty(trim($_POST["password"]))){
+                $password_err = "Please enter your password.";
+            } else {
+                $password = trim($_POST["password"]);
+            }
+
+            // Validate credentials
+            if(empty($username_err) && empty ($password_err)){
+                // Prepare a select statement
+                $sql = "SELECT id, reg_num, room_num, first_name, last_name, username, email, password, reg_date FROM users WHERE username = ?";
+
+                if($stmt = mysqli_prepare($link, $sql)){
+                    // Bind variables to the prepared statement as parameters
+                    mysqli_stmt_bind_param($stmt, "s", $param_username);
+
+                    // Set parameters
+                    $param_username = $username;
+
+                    // Attempt to execute the prepared statement
+                    if(mysqli_stmt_execute($stmt)){
+                        // Store result
+                        mysqli_stmt_store_result($stmt);
+
+                        // Check if username exists, if yes then verify Password
+                        if(mysqli_stmt_num_rows($stmt) == 1){
+                            // Bind result variables
+                            mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                            if(mysqli_stmt_fetch($stmt)){
+                                if(password_verify($password, $hashed_password)){
+                                    // Password is correct, so start a new session
+                                    session_start();
+
+                                    // Store data in session variables
+                                    $_SESSION["loggedin"] = true;
+                                    $_SESSION["id"] = $reg_num;
+                                    $_SESSION["username"] = $username;
+
+                                    // Redirect user to Dashboard
+                                    header("location: dashboard.php");
+                                } else {
+                                    // Password is not valid, display a generic error message
+                                    $login_err = "Invalid username or password.";
+                                }
+                            }
+                        } else {
+                            // Username does not exist, displays a generic error message
+                            $login_err = "Invalid username or passowrd.";
+                        }
+                    } else {
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+
+                    // Close statment
+                    mysqli_stmt_close($stmt);
+                }
+            }
+
+            // Close connection
+            mysqli_close($link);
+        }
+    ?>
+</head>
+<body>
+    <div class="login_body">
+        <div class="body_img"></div>
+        <div class="input_cont">
+            <div class="banner">
+                <div class="sign_b"><h1>Sign in</h1></div>
+                <div class="soc_b">
+                    <div><img src="assets/images/facebook.svg" alt="Facebook" width="40px"/></div>
+                    <div><img scr="assets/images/twitter.svg" alt="" width="40px" /></div>
+                </div>
+            </div>
+            <div class="input_f">
+                <?php 
+		            if(!empty($login_err)){
+		                echo '<div style="color:red;" class="alert">' . $login_err . '</div>';
+		            }        
+	            ?>
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <div class="text"><input type="text" placeholder="Enter Username" name="username" class="f-cont <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" />
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span></div>
+                    <div class="text"><input type="password" placeholder="Enter Password" name="password" class="f-cont <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" />
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span></div>
+                    <div class="submit"><input type="submit" value="Login" /></div>
+                </form>
+                <div class="help">
+                    <div><input type="checkbox" name="rme"/><label for="rme"> Remember Me</label></div>
+                    <div><a href="forgot_password.php">Forgot Password</a></div>
+                </div>
+                <div class="help1"><p>Dont have an Account yet? <a href="register.php">Signup</a></p></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
 </html>
-

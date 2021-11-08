@@ -1,7 +1,19 @@
+<?php 
+
+
+include('server.php');
+
+if (isset($_SESSION['username'])) {
+	header('location: index.php');
+}
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Reset</title>
+  	<title>Reset Password | Capstone</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,7 +21,7 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 
 	</head>
 	<body>
@@ -19,34 +31,58 @@
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
 					<div class="wrap">
-						<div class="img" style="background-image: url(images/mat.jpg);"></div>
+						<div class="img" style="background-image: url(assets/images/mat.jpg);"></div>
 						<div class="login-wrap p-4 p-md-5">
+						<?php
+				  if ($verified_success == NULL) {
+					?>
 			      	<div class="d-flex">
 			      		<div class="w-100">
-			      			<h3 class="mb-4">Reset</h3>
+			      			<h4 class="mb-4">Reset Your Capstone Password</h4>
 			      		</div>
-								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-									</p>
-								</div>
 			      	</div>
-							<form action="#" class="signin-form">
+							<form action="forgot_password.php" method="post"class="signin-form">
+							<?php include('errors.php'); ?> <?php include('success.php'); ?>
 			      		<div class="form-group mt-3">
-			      			<input type="email" class="form-control" required>
-			      			<label class="form-control-placeholder" for="username">Enter Email Address:</label>
+						  <label>Enter Reg Num:</label>
+			      			<input type="text" name="reg_num" class="form-control" required>
 			      		</div>
                           <div class="form-group mt-3">
-                            <input type="text" class="form-control" required>
-                            <label class="form-control-placeholder" for="username">Enter Reg No:</label>
+						  <label>Enter Email Address:</label>
+                            <input type="email" name="email" class="form-control" required style="text-transform: lowercase">
                         </div>  
 		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary rounded px-3" style="background-color: rgb(68, 68, 214) !important">Continue</button>
+		            	<button type="submit" name="forgotten_password" class="form-control btn btn-primary rounded px-3" style="background-color: rgb(68, 68, 214) !important">Verify</button>
 		            </div>
-		           
-		          </form>
-		          <p class="text-center">Oh i remember now? <a href="index.html" style="color: rgb(68, 68, 214) !important;">Sign Up</a></p>
+		           </form>
+		          <p class="text-center">Oh i remember now <a href="index.php" style="color: rgb(68, 68, 214) !important;">Login</a></p>
+				  <?php } ?>
+
+
+				  <?php
+				  if ($verified_success != NULL) {
+					?>
+
+					
+					<div class="d-flex">
+			      		<div class="w-100">
+			      			<h4 class="mb-4" style="color: green !important">Welcome <b style="color: rgb(68, 68, 214) !important"><?php echo $list_f_name ?> <?php echo $list_l_name ?></b></h4>
+			      		</div>
+			      	</div>
+						<form action="forgot_password.php" method="post"class="signin-form">
+						<?php include('errors.php'); ?> <?php include('success.php'); ?>
+						<div class="form-group mt-3">
+						  <label>Enter New Password:</label>
+                            <input type="password" name="new_password" class="form-control" required>
+                        </div>  
+						<div class="form-group mt-3">
+						  <label>Confirm New Password:</label>
+                            <input type="password" name="new_password_c" class="form-control" required>
+                        </div> 
+						<div class="form-group">
+		            	<button type="submit" name="forgotten_password_c" class="form-control btn btn-primary rounded px-3" style="background-color: rgb(68, 68, 214) !important">Change Password</button>
+		            </div>
+					<?php } ?> 
 		        </div>
 		      </div>
 				</div>

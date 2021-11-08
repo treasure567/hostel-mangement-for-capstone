@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2021 at 01:15 AM
+-- Generation Time: Nov 08, 2021 at 10:38 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
   `room_no` int(11) NOT NULL,
-  `user` varchar(100) NOT NULL,
+  `student_id` varchar(100) NOT NULL,
   `fees` int(11) NOT NULL DEFAULT 50000,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,15 +39,15 @@ CREATE TABLE `rooms` (
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `room_no`, `user`, `fees`, `date_created`) VALUES
-(1, 23, '', 50000, '2021-11-06 20:09:48'),
-(2, 67, '', 50000, '2021-11-06 20:09:48'),
-(3, 44, '', 50000, '2021-11-06 20:10:18'),
-(4, 78, '', 50000, '2021-11-06 20:10:43'),
-(5, 91, '', 50000, '2021-11-06 20:10:43'),
-(6, 79, '', 50000, '2021-11-06 20:22:11'),
-(7, 90, '', 50000, '2021-11-06 20:22:48'),
-(8, 15, '', 50000, '2021-11-06 20:22:48');
+INSERT INTO `rooms` (`id`, `room_no`, `student_id`, `fees`, `date_created`) VALUES
+(1, 23, '2', 50000, '2021-11-06 20:09:48'),
+(2, 67, '21', 50000, '2021-11-06 20:09:48'),
+(3, 44, '2', 50000, '2021-11-06 20:10:18'),
+(4, 78, '2', 50000, '2021-11-06 20:10:43'),
+(5, 91, '4', 50000, '2021-11-06 20:10:43'),
+(6, 79, '2', 50000, '2021-11-06 20:22:11'),
+(7, 90, '4', 50000, '2021-11-06 20:22:48'),
+(8, 15, '4', 50000, '2021-11-06 20:22:48');
 
 -- --------------------------------------------------------
 
@@ -93,8 +93,8 @@ INSERT INTO `students` (`id`, `reg_num`, `first_name`, `last_name`, `student_ema
 (18, 'SH-IT-0076085', 'Daniel', 'Idahosa', 'danielidahosa98@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148988797'),
 (19, 'SH-IT-0034332', 'Samuel', 'Adeleke', 'samueladeleke27@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148988853'),
 (20, 'SH-IT-02164', 'Clementina', 'Igadi', 'clementinaigadi@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148988909'),
-(21, 'SH-IT-0096229', 'Helen', 'Okereke', 'okerekehelenugoeze@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148988965'),
-(22, 'SH-IT-0037184', 'Olalekan', 'Nabsm', 'Olalekanabsm@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148989021'),
+(21, 'SH-IT-0096229', 'Helen', 'Okereke', 'okerekehelenugoeze@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-08 20:19:33', 'Male', '2348148988965'),
+(22, 'SH-IT-0037184', 'Olalekan', 'Nabsm', 'olalekanabsm@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-08 20:35:47', 'Male', '2348148989021'),
 (23, 'SH-IT-0032292', 'Samuel', 'Nanaosie', 'samuelnanaosei6@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148989077'),
 (24, 'SH-IT-0089800', 'Dammy', 'Owen', 'dammyowen@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148989133'),
 (25, 'SH-IT-0035600', 'Joseph', 'Adinoyi', 'j.adinoyi.jnr@gmail.com', 'Compt. Eng', 'Telecommunication', '2021-11-07 01:05:45', 'Male', '2348148989189'),
@@ -138,6 +138,11 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
 
 --
 -- Indexes for dumped tables

@@ -17,8 +17,6 @@
                     placeholder="Enter Your Old Password"
                     required>
                 </div>
-                <br>
-
 </div>
 <br>
 <div class="form-group mb-3">
@@ -37,7 +35,7 @@
 <br>
 <div class="form-group">
     <button type="submit" name="change_password"
-    class="form-control btn btn-primary submit px-3">Update</button>
+    class="form-control btn btn-primary submit px-3">Update Password</button>
 </div>
 </form>
 

@@ -157,9 +157,9 @@ if (isset($_GET['logout']))
                                         <?php echo $list_email ?>
                                     </p>
                                 </div>
-                                <a class="dropdown-item" href="edit-account.php"><i class="dropdown-item-icon icon-speech text-primary"></i>                                    Edit
+                                <a class="dropdown-item" href="edit-account.php"><i class="dropdown-item-icon icon-user text-primary"></i>                                    Edit
                                     Profile</a>
-                                <a class="dropdown-item" href="edit-account_c-password.php"><i class="dropdown-item-icon icon-speech text-primary"></i>Change
+                                <a class="dropdown-item" href="edit-account_c-password.php"><i class="dropdown-item-icon icon-lock text-primary"></i>Change
                                     Password</a>
                                 <a href="index.php?logout='1'" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign
                                     Out</a>
@@ -188,12 +188,36 @@ if (isset($_GET['logout']))
                             <br>
                             <div class="text-wrapper text-center" style="color: white;">
                                 <p class="profile-name">
-                                    <?php echo $list_f_name ?>&nbsp;
-                                        <?php echo $list_l_name ?>
+                                    <b><?php echo $list_f_name ?>&nbsp;
+                                        <?php echo $list_l_name ?></b>
+                                </p>
+                                <p class="designation"><b>Registration ID:</b>
+                                    <span
+                                    style="color: yellow;">
+                                        <?php echo $list_reg_num ?>
+                                            </span>
+                                </p>
+                                <p class="">Email Address:
+                                    <span
+                                    style="color: yellow;">
+                                        <?php echo $list_email ?>
+                                            </span>
+                                </p>
+                                <p class="designation">Contact Number:
+                                    <span
+                                    style="color: yellow;">
+                                        <?php echo $list_c_num ?>
+                                            </span>
+                                </p>
+                                <p class="designation">Gender:
+                                    <span
+                                    style="color: yellow;">
+                                        <?php echo $list_gender ?>
+                                            </span>
                                 </p>
                                 <p class="designation">Department:
                                     <span
-                                    style="color: green;">
+                                    style="color: yellow;">
                                         <?php echo $list_dept ?>
                                             </span>
                                 </p>
@@ -220,17 +244,11 @@ if (isset($_GET['logout']))
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="card.php">
-                                <span class="menu-title">Reciept</span>
-                                <i class="icon-grid menu-icon"></i>
-                            </a>
-                        </li>
                         <?php  if (isset($_SESSION['username'])) : ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?logout='1'">
                                     <span class="menu-title">Logout</span>
-                                    <i class="icon-grid menu-icon"></i>
+                                    <i class="icon-power menu-icon"></i>
                                 </a>
                             </li>
                             <?php endif ?>

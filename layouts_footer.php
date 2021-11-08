@@ -3,8 +3,8 @@
 
     <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © schtech.com 2021</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> School of technology</span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © capstone project 2021</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Capstone Team</span>
         </div>
     </footer>
     <!-- partial -->
@@ -24,9 +24,9 @@
     <script src="assets/vendors/chartist/chartist.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/misc.js"></script>
+    <script src="assets/js2/off-canvas.js"></script>
+    <script src="assets/js2/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js2/dashboard.js"></script>
     <!-- End custom js for this page -->

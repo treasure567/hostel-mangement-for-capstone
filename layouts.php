@@ -191,43 +191,7 @@ if (isset($_GET['logout']))
                                     <b><?php echo $list_f_name ?>&nbsp;
                                         <?php echo $list_l_name ?></b>
                                 </p>
-                                <p class="designation"><b>Registration ID:</b>
-                                    <span
-                                    style="color: yellow;">
-                                        <?php echo $list_reg_num ?>
-                                            </span>
-                                </p>
-                                <p class="">Email Address:
-                                    <span
-                                    style="color: yellow;">
-                                        <?php echo $list_email ?>
-                                            </span>
-                                </p>
-                                <p class="designation">Contact Number:
-                                    <span
-                                    style="color: yellow;">
-                                        <?php echo $list_c_num ?>
-                                            </span>
-                                </p>
-                                <p class="designation">Gender:
-                                    <span
-                                    style="color: yellow;">
-                                        <?php echo $list_gender ?>
-                                            </span>
-                                </p>
-                                <p class="designation">Department:
-                                    <span
-                                    style="color: yellow;">
-                                        <?php echo $list_dept ?>
-                                            </span>
-                                </p>
-                                <p class="designation">Course:
-                                    <span
-                                    style="color: yellow;">
-                                        <?php echo $list_course ?>
-                                            </span>
-                                </p>
-                            </div>
+                                
 
 
                         </li>
@@ -238,6 +202,20 @@ if (isset($_GET['logout']))
                             <a class="nav-link" href="index.php">
                                 <span class="menu-title">Dashboard</span>
                                 <i class="icon-screen-desktop menu-icon"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="edit-account.php">
+                                <span class="menu-title">Edit Profile</span>
+                                <i class="icon-user menu-icon"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="edit-account_c-password.php">
+                                <span class="menu-title">Change Password</span>
+                                <i class="icon-lock menu-icon"></i>
                             </a>
                         </li>
 

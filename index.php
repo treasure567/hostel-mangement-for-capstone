@@ -12,10 +12,16 @@
                   </div>
                   <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
                   <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                  <a href="edit-account.php" type="button" class="btn px-0"> <i class="icon-user mr-2"></i>Edit Profile</a>
+                  <a  type="button" class="btn px-0"> <i class="icon-user mr-2">&nbsp;Your Reg No: <b style="color: red"><?php echo $list_reg_num ?></b></i></a>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                      <a href="edit-account_c-password.php" type="button" class="btn px-0"><i class="icon-lock mr-2"></i>Change Password</a>
+                      <a type="button" class="btn px-0"><i class="icon-lock mr-2"></i>Department: <b style="color: red"><?php echo $list_dept ?></b></a>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <a  type="button" class="btn px-0"><i class="icon-lock mr-2"></i>Course: <b style="color: red"><?php echo $list_course ?></b></a>
+                    </div>
+                    <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
+                      <a type="button" class="btn px-0"><i class="icon-lock mr-2"></i>Phone Number: <b style="color: red"><?php echo $list_c_num ?></b></a>
                     </div>
                   </div>
                 </div>

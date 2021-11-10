@@ -10,7 +10,7 @@ Live Demo: https://hostel.trenalyze.com
 
 -   Problem Definition
 
--   Problem Algorithm/Users Guide
+-   Problem Algorithm/Users Guidea
 
 -   Developers Guide
 

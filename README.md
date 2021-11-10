@@ -6,11 +6,11 @@ THEME: Hostel Management System using PHP
 
 Live Demo: https://hostel.trenalyze.com
 
-[Objective]{.underline}
+**Objectives**
 
 -   Problem Definition
 
--   Problem Algorithm/Users Guidea
+-   Problem Algorithm/Users Guide
 
 -   Developers Guide
 
@@ -21,9 +21,9 @@ Live Demo: https://hostel.trenalyze.com
 -   Summary
 
 ```{=html}
-<!-- -->
+
 ```
--   [Project Definition]{.underline}
+**Project Definition**
 
 We decided to handle this project having in mind that before now
 students will have to travel to the school after they receive their
@@ -40,7 +40,7 @@ https://hostel.trenalyze.com
 
 \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
--   [Design Specification]{.underline}
+**Design Specification**
 
 1.  A laptop or desktop.
 
@@ -50,7 +50,7 @@ https://hostel.trenalyze.com
 
 \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
--   [Problem Algorithm]{.underline}
+**Problem Algorithm**
 
 The school already has a database of all students given admission into
 the school, and also a database of all the available hostel rooms in the
@@ -77,7 +77,7 @@ their school details (email address) and site details (username and
 password) in their dashboard. There is also forgot password page where
 users request to change their password anytime they feel like.
 
--   [Developers Guide]{.underline}
+**Developers Guide**
 
 This project was arranged in a well-defined manner it consists of 2
 folders and some view files needed.
@@ -138,54 +138,39 @@ users table
 
 **DIAGRAMATIC REPRESENTATION**
 
-  -----------------------------------------------------------------------
-                           **Users**
-  ------------------------ ----------------------------------------------
-  **PK**                   **id**
+![C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot
+(79).png](./doc_images/media/dia1.png)
 
-  **FK**                   **student_id**
-  -----------------------------------------------------------------------
 
-  -----------------------------------------------------------------------
-                           **Students**
-  ------------------------ ----------------------------------------------
-  **PK**                   **id**
 
-  -----------------------------------------------------------------------
+**Data Flow Diagram**
 
-  -----------------------------------------------------------------------
-                           **Rooms**
-  ------------------------ ----------------------------------------------
-  **PK**                   **id**
+![C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot
+(79).png](./doc_images/media/dia2.png)
 
-  **FK**                   **user_id**
-  -----------------------------------------------------------------------
 
--   [Data Flow Diagram]{.underline}
 
--   [Summary]{.underline}
+
+**Summary**
 
 It was really fun handling this project here are some screenshots of our
 pages and how they look like
 
+
+
 **The Registration Page:**
 
 ![C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot
-(79).png](./doc_images/media/image1.png){width="5.322916666666667in"
-height="2.8229166666666665in"}
+(79).png](./doc_images/media/image1.png)
 
 **The Login Page:**![C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot
-(80).png](./doc_images/media/image2.png){width="5.322916666666667in"
-height="2.9791666666666665in"}
-
+(80).png](./doc_images/media/image2.png)
 **The Students Dashboard:**
 
 ![C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot
-(81).png](./doc_images/media/image3.png){width="5.426099081364829in"
-height="3.09375in"}
+(81).png](./doc_images/media/image3.png)
 
 **The Edit Account:**
 
 ![C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot
-(82).png](./doc_images/media/image4.png){width="5.40625in"
-height="3.125in"}
+(82).png](./doc_images/media/image4.png)

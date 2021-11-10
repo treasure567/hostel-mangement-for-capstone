@@ -1,5 +1,17 @@
 \[SIDE-HUSTLE (PHP CAPSTONE)\]
 
+Demo Registration Details ->
+
+Registration Number: SH-IT-0051538
+
+Email Address: uvietoboretreasure@gmail.com
+
+Username: Use Yours
+
+Password: Use Yours
+
+
+
 \[Team 271-310\]
 
 THEME: Hostel Management System using PHP
